@@ -125,10 +125,10 @@ public class ChessBoardPanel extends JPanel {
     }
 
     private ChessMove resolvePromotion(List<ChessMove> candidates) {
-        String[] labels = {"Ферзь", "Тура", "Слон", "Кінь"};
+        String[] labels = {"Queen", "Tour", "Elephant", "Horse"};
         PieceType[] types = {PieceType.QUEEN, PieceType.ROOK, PieceType.BISHOP, PieceType.KNIGHT};
-        int choice = JOptionPane.showOptionDialog(this, "Оберіть фігуру для перетворення пішака:",
-                "Перетворення пішака", JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE,
+        int choice = JOptionPane.showOptionDialog(this, "Choose a piece to transform the pawn into:",
+                "Pawn transformation", JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE,
                 null, labels, labels[0]);
         if (choice < 0) choice = 0;
         PieceType chosenType = types[choice];
