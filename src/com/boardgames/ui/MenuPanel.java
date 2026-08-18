@@ -17,25 +17,25 @@ public class MenuPanel extends GradientPanel {
         content.setOpaque(false);
         content.setLayout(new BoxLayout(content, BoxLayout.Y_AXIS));
 
-        JLabel eyebrow = new JLabel("НАСТІЛЬНІ ІГРИ");
+        JLabel eyebrow = new JLabel("BOARD GAMES");
         eyebrow.setFont(Theme.FONT_SECTION);
         eyebrow.setForeground(Theme.ACCENT);
         eyebrow.setAlignmentX(Component.CENTER_ALIGNMENT);
 
-        JLabel title = new JLabel("Оберіть гру");
+        JLabel title = new JLabel("Choose a game");
         title.setFont(Theme.FONT_TITLE);
         title.setForeground(Theme.TEXT_PRIMARY);
         title.setAlignmentX(Component.CENTER_ALIGNMENT);
         title.setBorder(BorderFactory.createEmptyBorder(4, 0, 28, 0));
 
-        MenuCard checkersCard = new MenuCard("\u26C2", "Шашки",
-                "Українські шашки з обов'язковим взяттям і дамками", onCheckers);
+        MenuCard checkersCard = new MenuCard("\u26C2", "Checkers",
+                "Ukrainian checkers with mandatory capture and checkers", onCheckers);
         checkersCard.setAlignmentX(Component.CENTER_ALIGNMENT);
         checkersCard.setMaximumSize(new Dimension(440, 100));
         checkersCard.setPreferredSize(new Dimension(440, 100));
 
-        MenuCard chessCard = new MenuCard("\u265A", "Шахмати",
-                "Класичні шахи: рокіровка, взяття на проході, мат", onChess);
+        MenuCard chessCard = new MenuCard("\u265A", "Chess",
+                "Classic chess: castling, passing capture, checkmate", onChess);
         chessCard.setAlignmentX(Component.CENTER_ALIGNMENT);
         chessCard.setMaximumSize(new Dimension(440, 100));
         chessCard.setPreferredSize(new Dimension(440, 100));
