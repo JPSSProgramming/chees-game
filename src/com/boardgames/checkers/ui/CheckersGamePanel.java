@@ -41,9 +41,9 @@ public class CheckersGamePanel extends JPanel {
         scoreLabel.setForeground(Theme.TEXT_SECONDARY);
         scoreLabel.setBorder(BorderFactory.createEmptyBorder(0, 10, 10, 10));
 
-        RoundedButton newGameBtn = new RoundedButton("Нова гра", Theme.ACCENT, Theme.ACCENT_HOVER, Theme.TEXT_ON_ACCENT);
+        RoundedButton newGameBtn = new RoundedButton("New game", Theme.ACCENT, Theme.ACCENT_HOVER, Theme.TEXT_ON_ACCENT);
         newGameBtn.addActionListener(e -> showStartDialogAndReset());
-        RoundedButton menuBtn = new RoundedButton("У головне меню", Theme.SECONDARY_BTN, Theme.SECONDARY_BTN_HOVER, Theme.TEXT_PRIMARY);
+        RoundedButton menuBtn = new RoundedButton("To main menu", Theme.SECONDARY_BTN, Theme.SECONDARY_BTN_HOVER, Theme.TEXT_PRIMARY);
         menuBtn.addActionListener(e -> onBackToMenu.run());
 
         JPanel top = new JPanel(new BorderLayout());
@@ -103,7 +103,7 @@ public class CheckersGamePanel extends JPanel {
         if (!isAiTurn()) return;
 
         boardPanel.setInteractive(false);
-        statusLabel.setText("ШІ (" + difficulty.label + ") обмірковує хід...");
+        statusLabel.setText("AI (" + difficulty.label + ")is considering a move ...");
 
         PlayerColor aiColor = game.getTurn();
         Difficulty diff = difficulty;
@@ -135,12 +135,12 @@ public class CheckersGamePanel extends JPanel {
         CheckersGame.Status status = game.getStatus();
         int white = game.getBoard().countPieces(PlayerColor.WHITE);
         int black = game.getBoard().countPieces(PlayerColor.BLACK);
-        scoreLabel.setText("Білі: " + white + "    Чорні: " + black);
+        scoreLabel.setText("White: " + white + "    Black: " + black);
 
         if (status == CheckersGame.Status.IN_PROGRESS) {
             boolean humanTurn = mode == StartDialog.Mode.PVP || game.getTurn() == humanColor;
-            String turnName = game.getTurn() == PlayerColor.WHITE ? "білих" : "чорних";
-            statusLabel.setText("Хід " + turnName + (humanTurn ? "" : " (ШІ)"));
+            String turnName = game.getTurn() == PlayerColor.WHITE ? "white" : "Black";
+            statusLabel.setText("Course " + turnName + (humanTurn ? "" : " (AI)"));
             statusLabel.setForeground(Theme.TEXT_PRIMARY);
             boardPanel.setInteractive(humanTurn);
             List<Move> legal = game.legalMovesForCurrentPlayer();
@@ -150,9 +150,9 @@ public class CheckersGamePanel extends JPanel {
             boardPanel.setLegalMoves(java.util.Collections.emptyList());
             statusLabel.setForeground(Theme.ACCENT);
             switch (status) {
-                case WHITE_WINS -> statusLabel.setText("Перемога білих \u2666");
-                case BLACK_WINS -> statusLabel.setText("Перемога чорних \u2666");
-                case DRAW -> statusLabel.setText("Нічия");
+                case WHITE_WINS -> statusLabel.setText(" White victory\u2666");
+                case BLACK_WINS -> statusLabel.setText("Black victory \u2666");
+                case DRAW -> statusLabel.setText("Draw");
                 default -> {
                 }
             }
