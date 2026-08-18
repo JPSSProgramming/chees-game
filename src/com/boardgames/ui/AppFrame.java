@@ -20,7 +20,7 @@ public class AppFrame extends JFrame {
     private final ChessGamePanel chessPanel;
 
     public AppFrame() {
-        super("Настільні ігри");
+        super("Board games");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         getContentPane().setBackground(Theme.BG_PRIMARY);
 
