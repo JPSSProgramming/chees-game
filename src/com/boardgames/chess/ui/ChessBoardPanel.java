@@ -12,7 +12,9 @@ import java.util.List;
 
 public class ChessBoardPanel extends JPanel {
 
-    public interface MoveListener { void onMoveChosen(ChessMove move); }
+    public interface MoveListener {
+        void onMoveChosen(ChessMove move);
+    }
 
     private static final int CELL = 68;
     private static final int MARGIN = 30;
@@ -36,32 +38,63 @@ public class ChessBoardPanel extends JPanel {
         setPreferredSize(new Dimension(size, size));
         setBackground(Theme.BG_PRIMARY);
         addMouseListener(new MouseAdapter() {
-            @Override public void mousePressed(MouseEvent e) { handleClick(e.getX(), e.getY()); }
+            @Override
+            public void mousePressed(MouseEvent e) {
+                handleClick(e.getX(), e.getY());
+            }
         });
     }
 
-    public void setListener(MoveListener listener) { this.listener = listener; }
-    public void setBoard(ChessBoard board) { this.board = board; repaint(); }
+    public void setListener(MoveListener listener) {
+        this.listener = listener;
+    }
+
+    public void setBoard(ChessBoard board) {
+        this.board = board;
+        repaint();
+    }
 
     public void setLegalMoves(List<ChessMove> moves) {
         this.legalMoves = moves;
-        selectedRow = null; selectedCol = null;
+        selectedRow = null;
+        selectedCol = null;
         repaint();
     }
 
     public void setInteractive(boolean interactive) {
         this.interactive = interactive;
-        if (!interactive) { selectedRow = null; selectedCol = null; }
+        if (!interactive) {
+            selectedRow = null;
+            selectedCol = null;
+        }
         repaint();
     }
 
-    public void setFlipped(boolean flipped) { this.flipped = flipped; repaint(); }
-    public void setCheckSquare(int[] square) { this.checkSquare = square; repaint(); }
+    public void setFlipped(boolean flipped) {
+        this.flipped = flipped;
+        repaint();
+    }
 
-    private int screenRow(int r) { return flipped ? ChessBoard.SIZE - 1 - r : r; }
-    private int screenCol(int c) { return flipped ? ChessBoard.SIZE - 1 - c : c; }
-    private int boardRowFromScreen(int sr) { return flipped ? ChessBoard.SIZE - 1 - sr : sr; }
-    private int boardColFromScreen(int sc) { return flipped ? ChessBoard.SIZE - 1 - sc : sc; }
+    public void setCheckSquare(int[] square) {
+        this.checkSquare = square;
+        repaint();
+    }
+
+    private int screenRow(int r) {
+        return flipped ? ChessBoard.SIZE - 1 - r : r;
+    }
+
+    private int screenCol(int c) {
+        return flipped ? ChessBoard.SIZE - 1 - c : c;
+    }
+
+    private int boardRowFromScreen(int sr) {
+        return flipped ? ChessBoard.SIZE - 1 - sr : sr;
+    }
+
+    private int boardColFromScreen(int sc) {
+        return flipped ? ChessBoard.SIZE - 1 - sc : sc;
+    }
 
     private void handleClick(int x, int y) {
         if (!interactive || board == null) return;
@@ -73,15 +106,21 @@ public class ChessBoardPanel extends JPanel {
             List<ChessMove> candidates = findMoves(selectedRow, selectedCol, r, c);
             if (!candidates.isEmpty()) {
                 ChessMove chosen = candidates.size() == 1 ? candidates.get(0) : resolvePromotion(candidates);
-                selectedRow = null; selectedCol = null;
+                selectedRow = null;
+                selectedCol = null;
                 repaint();
                 if (chosen != null && listener != null) listener.onMoveChosen(chosen);
                 return;
             }
         }
 
-        if (hasMovesFrom(r, c)) { selectedRow = r; selectedCol = c; }
-        else { selectedRow = null; selectedCol = null; }
+        if (hasMovesFrom(r, c)) {
+            selectedRow = r;
+            selectedCol = c;
+        } else {
+            selectedRow = null;
+            selectedCol = null;
+        }
         repaint();
     }
 
@@ -175,7 +214,7 @@ public class ChessBoardPanel extends JPanel {
                 Color outline = p.side == Side.WHITE ? new Color(40, 40, 40) : new Color(215, 215, 215);
 
                 g.setColor(outline);
-                for (int[] o : new int[][]{{-1,-1},{-1,1},{1,-1},{1,1},{0,-1},{0,1},{-1,0},{1,0}}) {
+                for (int[] o : new int[][]{{-1, -1}, {-1, 1}, {1, -1}, {1, 1}, {0, -1}, {0, 1}, {-1, 0}, {1, 0}}) {
                     g.drawString(glyph, x + o[0], y + o[1]);
                 }
                 g.setColor(fill);

@@ -4,7 +4,8 @@ import javax.swing.*;
 import java.awt.*;
 
 public final class Theme {
-    private Theme() {}
+    private Theme() {
+    }
 
     public static final Color BG_PRIMARY = new Color(0x1B1D23);
     public static final Color BG_SECONDARY = new Color(0x242730);
@@ -92,6 +93,7 @@ public final class Theme {
         p.add(textLbl);
         return p;
     }
+
     public static void installLookAndFeel() {
         try {
             for (UIManager.LookAndFeelInfo info : UIManager.getInstalledLookAndFeels()) {
@@ -100,7 +102,8 @@ public final class Theme {
                     break;
                 }
             }
-        } catch (Exception ignored) {}
+        } catch (Exception ignored) {
+        }
 
         UIManager.put("control", BG_SECONDARY);
         UIManager.put("info", BG_CARD);

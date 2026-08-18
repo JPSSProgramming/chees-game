@@ -12,11 +12,21 @@ public class ChessBoard {
 
     public int[] enPassantTarget = null;
 
-    public static boolean inBounds(int r, int c) { return r >= 0 && r < SIZE && c >= 0 && c < SIZE; }
+    public static boolean inBounds(int r, int c) {
+        return r >= 0 && r < SIZE && c >= 0 && c < SIZE;
+    }
 
-    public ChessPiece get(int r, int c) { return grid[r][c]; }
-    public void set(int r, int c, ChessPiece p) { grid[r][c] = p; }
-    public boolean isEmpty(int r, int c) { return grid[r][c] == null; }
+    public ChessPiece get(int r, int c) {
+        return grid[r][c];
+    }
+
+    public void set(int r, int c, ChessPiece p) {
+        grid[r][c] = p;
+    }
+
+    public boolean isEmpty(int r, int c) {
+        return grid[r][c] == null;
+    }
 
     public void setupStandard() {
         for (int r = 0; r < SIZE; r++)

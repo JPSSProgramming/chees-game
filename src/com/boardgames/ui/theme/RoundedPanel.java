@@ -16,9 +16,20 @@ public class RoundedPanel extends JPanel {
         setOpaque(false);
     }
 
-    public void setPanelBackground(Color bg) { this.bg = bg; repaint(); }
-    public void setBorderColor(Color c) { this.borderColor = c; repaint(); }
-    public void setShadow(boolean shadow) { this.shadow = shadow; repaint(); }
+    public void setPanelBackground(Color bg) {
+        this.bg = bg;
+        repaint();
+    }
+
+    public void setBorderColor(Color c) {
+        this.borderColor = c;
+        repaint();
+    }
+
+    public void setShadow(boolean shadow) {
+        this.shadow = shadow;
+        repaint();
+    }
 
     @Override
     protected void paintComponent(Graphics g0) {

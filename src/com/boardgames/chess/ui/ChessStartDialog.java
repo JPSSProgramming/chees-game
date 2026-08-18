@@ -10,7 +10,7 @@ import java.awt.*;
 
 public class ChessStartDialog extends JDialog {
 
-    public enum Mode { PVP, PVA }
+    public enum Mode {PVP, PVA}
 
     private Mode chosenMode = Mode.PVA;
     private ChessDifficulty chosenDifficulty = ChessDifficulty.MEDIUM;
@@ -40,8 +40,10 @@ public class ChessStartDialog extends JDialog {
         JRadioButton pvaBtn = new JRadioButton("Проти штучного інтелекту", true);
         Theme.styleRadio(pvpBtn);
         Theme.styleRadio(pvaBtn);
-        modeGroup.add(pvpBtn); modeGroup.add(pvaBtn);
-        modePanel.add(pvaBtn); modePanel.add(pvpBtn);
+        modeGroup.add(pvpBtn);
+        modeGroup.add(pvaBtn);
+        modePanel.add(pvaBtn);
+        modePanel.add(pvpBtn);
         content.add(modePanel);
         content.add(Box.createVerticalStrut(10));
 
@@ -63,8 +65,10 @@ public class ChessStartDialog extends JDialog {
         JRadioButton blackBtn = new JRadioButton("Чорні");
         Theme.styleRadio(whiteBtn);
         Theme.styleRadio(blackBtn);
-        sideGroup.add(whiteBtn); sideGroup.add(blackBtn);
-        sidePanel.add(whiteBtn); sidePanel.add(blackBtn);
+        sideGroup.add(whiteBtn);
+        sideGroup.add(blackBtn);
+        sidePanel.add(whiteBtn);
+        sidePanel.add(blackBtn);
         content.add(sidePanel);
 
         Runnable updateEnabled = () -> {
@@ -97,8 +101,19 @@ public class ChessStartDialog extends JDialog {
         setLocationRelativeTo(owner);
     }
 
-    public boolean isConfirmed() { return confirmed; }
-    public Mode getChosenMode() { return chosenMode; }
-    public ChessDifficulty getChosenDifficulty() { return chosenDifficulty; }
-    public Side getChosenHumanSide() { return chosenHumanSide; }
+    public boolean isConfirmed() {
+        return confirmed;
+    }
+
+    public Mode getChosenMode() {
+        return chosenMode;
+    }
+
+    public ChessDifficulty getChosenDifficulty() {
+        return chosenDifficulty;
+    }
+
+    public Side getChosenHumanSide() {
+        return chosenHumanSide;
+    }
 }

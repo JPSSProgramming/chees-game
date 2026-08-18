@@ -109,14 +109,19 @@ public class CheckersGamePanel extends JPanel {
         Difficulty diff = difficulty;
 
         SwingWorker<Move, Void> worker = new SwingWorker<>() {
-            @Override protected Move doInBackground() {
+            @Override
+            protected Move doInBackground() {
                 return aiEngine.chooseMove(game.getBoard(), aiColor, diff);
             }
-            @Override protected void done() {
+
+            @Override
+            protected void done() {
                 try {
                     Move move = get();
                     if (move != null && !game.isGameOver()) game.applyMove(move);
-                } catch (Exception ex) { ex.printStackTrace(); }
+                } catch (Exception ex) {
+                    ex.printStackTrace();
+                }
                 refresh();
                 maybeTriggerAI();
             }
@@ -148,7 +153,8 @@ public class CheckersGamePanel extends JPanel {
                 case WHITE_WINS -> statusLabel.setText("Перемога білих \u2666");
                 case BLACK_WINS -> statusLabel.setText("Перемога чорних \u2666");
                 case DRAW -> statusLabel.setText("Нічия");
-                default -> {}
+                default -> {
+                }
             }
         }
     }

@@ -38,9 +38,22 @@ public class MenuCard extends JPanel {
         add(textPanel, BorderLayout.CENTER);
 
         addMouseListener(new MouseAdapter() {
-            @Override public void mouseEntered(MouseEvent e) { hover = true; repaint(); }
-            @Override public void mouseExited(MouseEvent e) { hover = false; repaint(); }
-            @Override public void mouseClicked(MouseEvent e) { onClick.run(); }
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                hover = true;
+                repaint();
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+                hover = false;
+                repaint();
+            }
+
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                onClick.run();
+            }
         });
     }
 

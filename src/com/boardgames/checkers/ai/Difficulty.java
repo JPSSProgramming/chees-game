@@ -12,9 +12,13 @@ public enum Difficulty {
     public final double randomness;
 
     Difficulty(String label, int depth, double randomness) {
-        this.label = label; this.depth = depth; this.randomness = randomness;
+        this.label = label;
+        this.depth = depth;
+        this.randomness = randomness;
     }
 
     @Override
-    public String toString() { return label; }
+    public String toString() {
+        return label;
+    }
 }

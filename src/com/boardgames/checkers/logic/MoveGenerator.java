@@ -51,7 +51,8 @@ public class MoveGenerator {
                     path.add(new int[]{r, c});
                     path.add(new int[]{rr, cc});
                     moves.add(new Move(path, new ArrayList<>()));
-                    rr += d[0]; cc += d[1];
+                    rr += d[0];
+                    cc += d[1];
                 }
             }
         } else {
@@ -104,7 +105,10 @@ public class MoveGenerator {
             for (int[] d : DIRS) {
                 int dr = d[0], dc = d[1];
                 int rr = r + dr, cc = c + dc;
-                while (Board.inBounds(rr, cc) && board.get(rr, cc).isEmpty()) { rr += dr; cc += dc; }
+                while (Board.inBounds(rr, cc) && board.get(rr, cc).isEmpty()) {
+                    rr += dr;
+                    cc += dc;
+                }
                 if (!Board.inBounds(rr, cc)) continue;
                 Piece enemy = board.get(rr, cc);
                 if (enemy.isEmpty() || enemy.getColor() == p.getColor()) continue;
@@ -125,7 +129,8 @@ public class MoveGenerator {
                     if (deeper.isEmpty()) result.add(new Move(new ArrayList<>(newPath), new ArrayList<>(newCaptured)));
                     else result.addAll(deeper);
 
-                    lr += dr; lc += dc;
+                    lr += dr;
+                    lc += dc;
                 }
             }
         }

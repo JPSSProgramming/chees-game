@@ -12,12 +12,23 @@ public final class ChessPiece {
     public char fenChar() {
         char c;
         switch (type) {
-            case PAWN: c = 'p'; break;
-            case KNIGHT: c = 'n'; break;
-            case BISHOP: c = 'b'; break;
-            case ROOK: c = 'r'; break;
-            case QUEEN: c = 'q'; break;
-            default: c = 'k';
+            case PAWN:
+                c = 'p';
+                break;
+            case KNIGHT:
+                c = 'n';
+                break;
+            case BISHOP:
+                c = 'b';
+                break;
+            case ROOK:
+                c = 'r';
+                break;
+            case QUEEN:
+                c = 'q';
+                break;
+            default:
+                c = 'k';
         }
         return side == Side.WHITE ? Character.toUpperCase(c) : c;
     }

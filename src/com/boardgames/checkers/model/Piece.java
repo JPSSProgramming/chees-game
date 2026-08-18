@@ -10,12 +10,26 @@ public enum Piece {
     private final PlayerColor color;
     private final boolean king;
 
-    Piece(PlayerColor color, boolean king) { this.color = color; this.king = king; }
+    Piece(PlayerColor color, boolean king) {
+        this.color = color;
+        this.king = king;
+    }
 
-    public PlayerColor getColor() { return color; }
-    public boolean isKing() { return king; }
-    public boolean isEmpty() { return this == EMPTY; }
-    public boolean isColor(PlayerColor c) { return color == c; }
+    public PlayerColor getColor() {
+        return color;
+    }
+
+    public boolean isKing() {
+        return king;
+    }
+
+    public boolean isEmpty() {
+        return this == EMPTY;
+    }
+
+    public boolean isColor(PlayerColor c) {
+        return color == c;
+    }
 
     public Piece promoted() {
         if (this == WHITE_MAN) return WHITE_KING;

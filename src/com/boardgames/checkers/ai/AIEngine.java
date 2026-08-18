@@ -38,8 +38,13 @@ public class AIEngine {
     }
 
     private static class ScoredMove {
-        Move move; int score;
-        ScoredMove(Move m, int s) { move = m; score = s; }
+        Move move;
+        int score;
+
+        ScoredMove(Move m, int s) {
+            move = m;
+            score = s;
+        }
     }
 
     private int negamax(Board board, PlayerColor color, int depth, int alpha, int beta) {

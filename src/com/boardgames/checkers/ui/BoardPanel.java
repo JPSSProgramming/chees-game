@@ -15,7 +15,9 @@ import java.util.List;
 
 public class BoardPanel extends JPanel {
 
-    public interface MoveListener { void onMoveChosen(Move move); }
+    public interface MoveListener {
+        void onMoveChosen(Move move);
+    }
 
     private static final int CELL = 68;
     private static final int MARGIN = 30;
@@ -37,31 +39,58 @@ public class BoardPanel extends JPanel {
         setPreferredSize(new Dimension(size, size));
         setBackground(Theme.BG_PRIMARY);
         addMouseListener(new MouseAdapter() {
-            @Override public void mousePressed(MouseEvent e) { handleClick(e.getX(), e.getY()); }
+            @Override
+            public void mousePressed(MouseEvent e) {
+                handleClick(e.getX(), e.getY());
+            }
         });
     }
 
-    public void setListener(MoveListener listener) { this.listener = listener; }
-    public void setBoard(Board board) { this.board = board; repaint(); }
+    public void setListener(MoveListener listener) {
+        this.listener = listener;
+    }
+
+    public void setBoard(Board board) {
+        this.board = board;
+        repaint();
+    }
 
     public void setLegalMoves(List<Move> moves) {
         this.legalMoves = moves;
-        selectedRow = null; selectedCol = null;
+        selectedRow = null;
+        selectedCol = null;
         repaint();
     }
 
     public void setInteractive(boolean interactive) {
         this.interactive = interactive;
-        if (!interactive) { selectedRow = null; selectedCol = null; }
+        if (!interactive) {
+            selectedRow = null;
+            selectedCol = null;
+        }
         repaint();
     }
 
-    public void setFlipped(boolean flipped) { this.flipped = flipped; repaint(); }
+    public void setFlipped(boolean flipped) {
+        this.flipped = flipped;
+        repaint();
+    }
 
-    private int screenRow(int boardRow) { return flipped ? Board.SIZE - 1 - boardRow : boardRow; }
-    private int screenCol(int boardCol) { return flipped ? Board.SIZE - 1 - boardCol : boardCol; }
-    private int boardRowFromScreen(int screenRow) { return flipped ? Board.SIZE - 1 - screenRow : screenRow; }
-    private int boardColFromScreen(int screenCol) { return flipped ? Board.SIZE - 1 - screenCol : screenCol; }
+    private int screenRow(int boardRow) {
+        return flipped ? Board.SIZE - 1 - boardRow : boardRow;
+    }
+
+    private int screenCol(int boardCol) {
+        return flipped ? Board.SIZE - 1 - boardCol : boardCol;
+    }
+
+    private int boardRowFromScreen(int screenRow) {
+        return flipped ? Board.SIZE - 1 - screenRow : screenRow;
+    }
+
+    private int boardColFromScreen(int screenCol) {
+        return flipped ? Board.SIZE - 1 - screenCol : screenCol;
+    }
 
     private void handleClick(int x, int y) {
         if (!interactive || board == null) return;
@@ -72,15 +101,21 @@ public class BoardPanel extends JPanel {
         if (selectedRow != null) {
             Move chosen = findMove(selectedRow, selectedCol, r, c);
             if (chosen != null) {
-                selectedRow = null; selectedCol = null;
+                selectedRow = null;
+                selectedCol = null;
                 repaint();
                 if (listener != null) listener.onMoveChosen(chosen);
                 return;
             }
         }
 
-        if (hasMovesFrom(r, c)) { selectedRow = r; selectedCol = c; }
-        else { selectedRow = null; selectedCol = null; }
+        if (hasMovesFrom(r, c)) {
+            selectedRow = r;
+            selectedCol = c;
+        } else {
+            selectedRow = null;
+            selectedCol = null;
+        }
         repaint();
     }
 

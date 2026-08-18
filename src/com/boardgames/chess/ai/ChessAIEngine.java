@@ -13,11 +13,17 @@ public class ChessAIEngine {
     private final Random random = new Random();
     private long deadline;
 
-    private static class TimeUp extends RuntimeException {}
+    private static class TimeUp extends RuntimeException {
+    }
 
     private static class ScoredMove {
-        ChessMove move; int score;
-        ScoredMove(ChessMove m, int s) { move = m; score = s; }
+        ChessMove move;
+        int score;
+
+        ScoredMove(ChessMove m, int s) {
+            move = m;
+            score = s;
+        }
     }
 
     public ChessMove chooseMove(ChessBoard board, Side aiSide, ChessDifficulty diff) {

@@ -110,14 +110,19 @@ public class ChessGamePanel extends JPanel {
         ChessDifficulty diff = difficulty;
 
         SwingWorker<ChessMove, Void> worker = new SwingWorker<>() {
-            @Override protected ChessMove doInBackground() {
+            @Override
+            protected ChessMove doInBackground() {
                 return aiEngine.chooseMove(game.getBoard(), aiSide, diff);
             }
-            @Override protected void done() {
+
+            @Override
+            protected void done() {
                 try {
                     ChessMove move = get();
                     if (move != null && !game.isGameOver()) game.applyMove(move);
-                } catch (Exception ex) { ex.printStackTrace(); }
+                } catch (Exception ex) {
+                    ex.printStackTrace();
+                }
                 refresh();
                 maybeTriggerAI();
             }
@@ -156,7 +161,8 @@ public class ChessGamePanel extends JPanel {
                 case STALEMATE_DRAW -> statusLabel.setText("Пат — нічия");
                 case FIFTY_MOVE_DRAW -> statusLabel.setText("Нічия за правилом 50 ходів");
                 case INSUFFICIENT_MATERIAL_DRAW -> statusLabel.setText("Нічия — недостатньо матеріалу");
-                default -> {}
+                default -> {
+                }
             }
         }
     }

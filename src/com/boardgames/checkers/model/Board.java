@@ -23,11 +23,21 @@ public class Board {
         }
     }
 
-    public static boolean isPlayable(int r, int c) { return (r + c) % 2 == 1; }
-    public static boolean inBounds(int r, int c) { return r >= 0 && r < SIZE && c >= 0 && c < SIZE; }
+    public static boolean isPlayable(int r, int c) {
+        return (r + c) % 2 == 1;
+    }
 
-    public Piece get(int r, int c) { return grid[r][c]; }
-    public void set(int r, int c, Piece p) { grid[r][c] = p; }
+    public static boolean inBounds(int r, int c) {
+        return r >= 0 && r < SIZE && c >= 0 && c < SIZE;
+    }
+
+    public Piece get(int r, int c) {
+        return grid[r][c];
+    }
+
+    public void set(int r, int c, Piece p) {
+        grid[r][c] = p;
+    }
 
     public Board copy() {
         Board b = new Board();

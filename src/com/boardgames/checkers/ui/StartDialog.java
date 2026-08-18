@@ -10,7 +10,7 @@ import java.awt.*;
 
 public class StartDialog extends JDialog {
 
-    public enum Mode { PVP, PVA }
+    public enum Mode {PVP, PVA}
 
     private Mode chosenMode = Mode.PVA;
     private Difficulty chosenDifficulty = Difficulty.MEDIUM;
@@ -40,8 +40,10 @@ public class StartDialog extends JDialog {
         JRadioButton pvaBtn = new JRadioButton("Проти штучного інтелекту", true);
         Theme.styleRadio(pvpBtn);
         Theme.styleRadio(pvaBtn);
-        modeGroup.add(pvpBtn); modeGroup.add(pvaBtn);
-        modePanel.add(pvaBtn); modePanel.add(pvpBtn);
+        modeGroup.add(pvpBtn);
+        modeGroup.add(pvaBtn);
+        modePanel.add(pvaBtn);
+        modePanel.add(pvpBtn);
         content.add(modePanel);
         content.add(Box.createVerticalStrut(10));
 
@@ -63,8 +65,10 @@ public class StartDialog extends JDialog {
         JRadioButton blackBtn = new JRadioButton("Чорні");
         Theme.styleRadio(whiteBtn);
         Theme.styleRadio(blackBtn);
-        colorGroup.add(whiteBtn); colorGroup.add(blackBtn);
-        colorPanel.add(whiteBtn); colorPanel.add(blackBtn);
+        colorGroup.add(whiteBtn);
+        colorGroup.add(blackBtn);
+        colorPanel.add(whiteBtn);
+        colorPanel.add(blackBtn);
         content.add(colorPanel);
 
         Runnable updateEnabled = () -> {
@@ -97,8 +101,19 @@ public class StartDialog extends JDialog {
         setLocationRelativeTo(owner);
     }
 
-    public boolean isConfirmed() { return confirmed; }
-    public Mode getChosenMode() { return chosenMode; }
-    public Difficulty getChosenDifficulty() { return chosenDifficulty; }
-    public PlayerColor getChosenHumanColor() { return chosenHumanColor; }
+    public boolean isConfirmed() {
+        return confirmed;
+    }
+
+    public Mode getChosenMode() {
+        return chosenMode;
+    }
+
+    public Difficulty getChosenDifficulty() {
+        return chosenDifficulty;
+    }
+
+    public PlayerColor getChosenHumanColor() {
+        return chosenHumanColor;
+    }
 }

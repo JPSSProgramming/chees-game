@@ -11,7 +11,9 @@ public class CheckersGame {
     private PlayerColor turn;
     private int movesWithoutCapture = 0;
 
-    public CheckersGame() { reset(); }
+    public CheckersGame() {
+        reset();
+    }
 
     public void reset() {
         board = new Board();
@@ -20,8 +22,13 @@ public class CheckersGame {
         movesWithoutCapture = 0;
     }
 
-    public Board getBoard() { return board; }
-    public PlayerColor getTurn() { return turn; }
+    public Board getBoard() {
+        return board;
+    }
+
+    public PlayerColor getTurn() {
+        return turn;
+    }
 
     public List<Move> legalMovesForCurrentPlayer() {
         return MoveGenerator.generateLegalMoves(board, turn);
@@ -33,7 +40,7 @@ public class CheckersGame {
         turn = turn.opposite();
     }
 
-    public enum Status { IN_PROGRESS, WHITE_WINS, BLACK_WINS, DRAW }
+    public enum Status {IN_PROGRESS, WHITE_WINS, BLACK_WINS, DRAW}
 
     public Status getStatus() {
         if (movesWithoutCapture >= 40) return Status.DRAW;
@@ -47,5 +54,7 @@ public class CheckersGame {
         return Status.IN_PROGRESS;
     }
 
-    public boolean isGameOver() { return getStatus() != Status.IN_PROGRESS; }
+    public boolean isGameOver() {
+        return getStatus() != Status.IN_PROGRESS;
+    }
 }

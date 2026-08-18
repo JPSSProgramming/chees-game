@@ -11,7 +11,10 @@ public final class ChessMove {
     public ChessMove(int fromRow, int fromCol, int toRow, int toCol, boolean isCapture,
                      boolean isCastleKingSide, boolean isCastleQueenSide, boolean isEnPassant,
                      PieceType promotion) {
-        this.fromRow = fromRow; this.fromCol = fromCol; this.toRow = toRow; this.toCol = toCol;
+        this.fromRow = fromRow;
+        this.fromCol = fromCol;
+        this.toRow = toRow;
+        this.toCol = toCol;
         this.isCapture = isCapture;
         this.isCastleKingSide = isCastleKingSide;
         this.isCastleQueenSide = isCastleQueenSide;
@@ -22,24 +25,32 @@ public final class ChessMove {
     public static ChessMove quiet(int fr, int fc, int tr, int tc) {
         return new ChessMove(fr, fc, tr, tc, false, false, false, false, null);
     }
+
     public static ChessMove capture(int fr, int fc, int tr, int tc) {
         return new ChessMove(fr, fc, tr, tc, true, false, false, false, null);
     }
+
     public static ChessMove promotion(int fr, int fc, int tr, int tc, boolean capture, PieceType promo) {
         return new ChessMove(fr, fc, tr, tc, capture, false, false, false, promo);
     }
+
     public static ChessMove enPassant(int fr, int fc, int tr, int tc) {
         return new ChessMove(fr, fc, tr, tc, true, false, false, true, null);
     }
+
     public static ChessMove castleKingSide(int r, int kingFromCol, int kingToCol) {
         return new ChessMove(r, kingFromCol, r, kingToCol, false, true, false, false, null);
     }
+
     public static ChessMove castleQueenSide(int r, int kingFromCol, int kingToCol) {
         return new ChessMove(r, kingFromCol, r, kingToCol, false, false, true, false, null);
     }
 
     private static final String FILES = "abcdefgh";
-    public String squareName(int r, int c) { return "" + FILES.charAt(c) + (8 - r); }
+
+    public String squareName(int r, int c) {
+        return "" + FILES.charAt(c) + (8 - r);
+    }
 
     @Override
     public String toString() {

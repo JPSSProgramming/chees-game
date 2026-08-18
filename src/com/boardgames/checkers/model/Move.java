@@ -11,11 +11,25 @@ public class Move {
         this.captured = captured;
     }
 
-    public int fromRow() { return path.get(0)[0]; }
-    public int fromCol() { return path.get(0)[1]; }
-    public int toRow() { return path.get(path.size() - 1)[0]; }
-    public int toCol() { return path.get(path.size() - 1)[1]; }
-    public boolean isCapture() { return !captured.isEmpty(); }
+    public int fromRow() {
+        return path.get(0)[0];
+    }
+
+    public int fromCol() {
+        return path.get(0)[1];
+    }
+
+    public int toRow() {
+        return path.get(path.size() - 1)[0];
+    }
+
+    public int toCol() {
+        return path.get(path.size() - 1)[1];
+    }
+
+    public boolean isCapture() {
+        return !captured.isEmpty();
+    }
 
     @Override
     public String toString() {

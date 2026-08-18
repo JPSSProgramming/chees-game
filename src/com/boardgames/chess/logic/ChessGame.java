@@ -11,7 +11,9 @@ public class ChessGame {
     private Side turn;
     private int halfMoveClock = 0;
 
-    public ChessGame() { reset(); }
+    public ChessGame() {
+        reset();
+    }
 
     public void reset() {
         board = new ChessBoard();
@@ -20,8 +22,13 @@ public class ChessGame {
         halfMoveClock = 0;
     }
 
-    public ChessBoard getBoard() { return board; }
-    public Side getTurn() { return turn; }
+    public ChessBoard getBoard() {
+        return board;
+    }
+
+    public Side getTurn() {
+        return turn;
+    }
 
     public List<ChessMove> legalMovesForCurrentPlayer() {
         return ChessMoveGenerator.generateLegalMoves(board, turn);
@@ -40,7 +47,7 @@ public class ChessGame {
         turn = turn.opposite();
     }
 
-    public enum Status { IN_PROGRESS, WHITE_WINS_MATE, BLACK_WINS_MATE, STALEMATE_DRAW, FIFTY_MOVE_DRAW, INSUFFICIENT_MATERIAL_DRAW }
+    public enum Status {IN_PROGRESS, WHITE_WINS_MATE, BLACK_WINS_MATE, STALEMATE_DRAW, FIFTY_MOVE_DRAW, INSUFFICIENT_MATERIAL_DRAW}
 
     public Status getStatus() {
         if (!board.hasSufficientMaterial()) return Status.INSUFFICIENT_MATERIAL_DRAW;
@@ -55,5 +62,7 @@ public class ChessGame {
         return Status.IN_PROGRESS;
     }
 
-    public boolean isGameOver() { return getStatus() != Status.IN_PROGRESS; }
+    public boolean isGameOver() {
+        return getStatus() != Status.IN_PROGRESS;
+    }
 }

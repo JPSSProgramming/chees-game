@@ -13,9 +13,14 @@ public enum ChessDifficulty {
     public final double randomness;
 
     ChessDifficulty(String label, int maxDepth, int timeBudgetMs, double randomness) {
-        this.label = label; this.maxDepth = maxDepth; this.timeBudgetMs = timeBudgetMs; this.randomness = randomness;
+        this.label = label;
+        this.maxDepth = maxDepth;
+        this.timeBudgetMs = timeBudgetMs;
+        this.randomness = randomness;
     }
 
     @Override
-    public String toString() { return label; }
+    public String toString() {
+        return label;
+    }
 }

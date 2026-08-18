@@ -7,9 +7,9 @@ import java.util.List;
 
 public class ChessMoveGenerator {
 
-    private static final int[][] KNIGHT_OFFSETS = {{-2,-1},{-2,1},{-1,-2},{-1,2},{1,-2},{1,2},{2,-1},{2,1}};
-    private static final int[][] DIAG_DIRS = {{-1,-1},{-1,1},{1,-1},{1,1}};
-    private static final int[][] ORTHO_DIRS = {{-1,0},{1,0},{0,-1},{0,1}};
+    private static final int[][] KNIGHT_OFFSETS = {{-2, -1}, {-2, 1}, {-1, -2}, {-1, 2}, {1, -2}, {1, 2}, {2, -1}, {2, 1}};
+    private static final int[][] DIAG_DIRS = {{-1, -1}, {-1, 1}, {1, -1}, {1, 1}};
+    private static final int[][] ORTHO_DIRS = {{-1, 0}, {1, 0}, {0, -1}, {0, 1}};
     private static final PieceType[] PROMOTIONS = {PieceType.QUEEN, PieceType.ROOK, PieceType.BISHOP, PieceType.KNIGHT};
 
     public static List<ChessMove> generateLegalMoves(ChessBoard board, Side side) {
@@ -126,7 +126,8 @@ public class ChessMoveGenerator {
                     if (target.side != side) moves.add(ChessMove.capture(r, c, rr, cc));
                     break;
                 }
-                rr += d[0]; cc += d[1];
+                rr += d[0];
+                cc += d[1];
             }
         }
     }
@@ -191,7 +192,8 @@ public class ChessMoveGenerator {
                     if (p.side == bySide && (p.type == PieceType.BISHOP || p.type == PieceType.QUEEN)) return true;
                     break;
                 }
-                rr += d[0]; cc += d[1];
+                rr += d[0];
+                cc += d[1];
             }
         }
         for (int[] d : ORTHO_DIRS) {
@@ -202,7 +204,8 @@ public class ChessMoveGenerator {
                     if (p.side == bySide && (p.type == PieceType.ROOK || p.type == PieceType.QUEEN)) return true;
                     break;
                 }
-                rr += d[0]; cc += d[1];
+                rr += d[0];
+                cc += d[1];
             }
         }
         return false;
@@ -232,8 +235,13 @@ public class ChessMoveGenerator {
         board.set(m.toRow, m.toCol, placed);
 
         if (moving.type == PieceType.KING) {
-            if (moving.side == Side.WHITE) { board.whiteCanCastleKingSide = false; board.whiteCanCastleQueenSide = false; }
-            else { board.blackCanCastleKingSide = false; board.blackCanCastleQueenSide = false; }
+            if (moving.side == Side.WHITE) {
+                board.whiteCanCastleKingSide = false;
+                board.whiteCanCastleQueenSide = false;
+            } else {
+                board.blackCanCastleKingSide = false;
+                board.blackCanCastleQueenSide = false;
+            }
         }
         if (moving.type == PieceType.ROOK) {
             if (moving.side == Side.WHITE) {
