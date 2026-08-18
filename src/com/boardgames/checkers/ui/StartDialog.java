@@ -1,7 +1,9 @@
-package com.checkers.ui;
+package com.boardgames.checkers.ui;
 
-import com.checkers.ai.Difficulty;
-import com.checkers.model.PlayerColor;
+import com.boardgames.checkers.ai.Difficulty;
+import com.boardgames.checkers.model.PlayerColor;
+import com.boardgames.ui.theme.RoundedButton;
+import com.boardgames.ui.theme.Theme;
 
 import javax.swing.*;
 import java.awt.*;
@@ -17,46 +19,52 @@ public class StartDialog extends JDialog {
 
     public StartDialog(Frame owner) {
         super(owner, "Нова гра — Шашки", true);
-        setLayout(new BorderLayout(10, 10));
+        setLayout(new BorderLayout());
         setResizable(false);
+        getContentPane().setBackground(Theme.BG_PRIMARY);
 
         JPanel content = new JPanel();
+        content.setBackground(Theme.BG_PRIMARY);
         content.setLayout(new BoxLayout(content, BoxLayout.Y_AXIS));
-        content.setBorder(BorderFactory.createEmptyBorder(15, 20, 15, 20));
+        content.setBorder(BorderFactory.createEmptyBorder(20, 24, 20, 24));
 
-        JLabel title = new JLabel("Українські шашки");
-        title.setFont(title.getFont().deriveFont(Font.BOLD, 20f));
+        JPanel title = Theme.iconTitle("\u26C2", "Українські шашки", Theme.FONT_TITLE.deriveFont(22f), Theme.TEXT_PRIMARY);
         title.setAlignmentX(Component.CENTER_ALIGNMENT);
         content.add(title);
-        content.add(Box.createVerticalStrut(15));
 
         JPanel modePanel = new JPanel(new FlowLayout(FlowLayout.LEFT));
-        modePanel.setBorder(BorderFactory.createTitledBorder("Режим гри"));
+        modePanel.setBackground(Theme.BG_SECONDARY);
+        modePanel.setBorder(Theme.sectionBorder("Режим гри"));
         ButtonGroup modeGroup = new ButtonGroup();
         JRadioButton pvpBtn = new JRadioButton("Двоє гравців (по черзі за одним комп'ютером)");
         JRadioButton pvaBtn = new JRadioButton("Проти штучного інтелекту", true);
-        modeGroup.add(pvpBtn);
-        modeGroup.add(pvaBtn);
-        modePanel.add(pvaBtn);
-        modePanel.add(pvpBtn);
+        Theme.styleRadio(pvpBtn);
+        Theme.styleRadio(pvaBtn);
+        modeGroup.add(pvpBtn); modeGroup.add(pvaBtn);
+        modePanel.add(pvaBtn); modePanel.add(pvpBtn);
         content.add(modePanel);
+        content.add(Box.createVerticalStrut(10));
 
         JPanel diffPanel = new JPanel(new FlowLayout(FlowLayout.LEFT));
-        diffPanel.setBorder(BorderFactory.createTitledBorder("Рівень складності ШІ"));
+        diffPanel.setBackground(Theme.BG_SECONDARY);
+        diffPanel.setBorder(Theme.sectionBorder("Рівень складності ШІ"));
         JComboBox<Difficulty> diffBox = new JComboBox<>(Difficulty.values());
         diffBox.setSelectedItem(Difficulty.MEDIUM);
+        Theme.styleCombo(diffBox);
         diffPanel.add(diffBox);
         content.add(diffPanel);
+        content.add(Box.createVerticalStrut(10));
 
         JPanel colorPanel = new JPanel(new FlowLayout(FlowLayout.LEFT));
-        colorPanel.setBorder(BorderFactory.createTitledBorder("Ваш колір (проти ШІ)"));
+        colorPanel.setBackground(Theme.BG_SECONDARY);
+        colorPanel.setBorder(Theme.sectionBorder("Ваш колір (проти ШІ)"));
         ButtonGroup colorGroup = new ButtonGroup();
         JRadioButton whiteBtn = new JRadioButton("Білі (ходять першими)", true);
         JRadioButton blackBtn = new JRadioButton("Чорні");
-        colorGroup.add(whiteBtn);
-        colorGroup.add(blackBtn);
-        colorPanel.add(whiteBtn);
-        colorPanel.add(blackBtn);
+        Theme.styleRadio(whiteBtn);
+        Theme.styleRadio(blackBtn);
+        colorGroup.add(whiteBtn); colorGroup.add(blackBtn);
+        colorPanel.add(whiteBtn); colorPanel.add(blackBtn);
         content.add(colorPanel);
 
         Runnable updateEnabled = () -> {
@@ -69,7 +77,7 @@ public class StartDialog extends JDialog {
         pvaBtn.addActionListener(e -> updateEnabled.run());
         updateEnabled.run();
 
-        JButton startBtn = new JButton("Почати гру");
+        RoundedButton startBtn = new RoundedButton("Почати гру", Theme.ACCENT, Theme.ACCENT_HOVER, Theme.TEXT_ON_ACCENT);
         startBtn.addActionListener(e -> {
             chosenMode = pvaBtn.isSelected() ? Mode.PVA : Mode.PVP;
             chosenDifficulty = (Difficulty) diffBox.getSelectedItem();
@@ -78,8 +86,9 @@ public class StartDialog extends JDialog {
             setVisible(false);
         });
 
-        content.add(Box.createVerticalStrut(15));
+        content.add(Box.createVerticalStrut(20));
         JPanel btnPanel = new JPanel();
+        btnPanel.setBackground(Theme.BG_PRIMARY);
         btnPanel.add(startBtn);
         content.add(btnPanel);
 
