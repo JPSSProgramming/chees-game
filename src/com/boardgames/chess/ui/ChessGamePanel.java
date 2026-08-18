@@ -41,9 +41,9 @@ public class ChessGamePanel extends JPanel {
         scoreLabel.setForeground(Theme.TEXT_SECONDARY);
         scoreLabel.setBorder(BorderFactory.createEmptyBorder(0, 10, 10, 10));
 
-        RoundedButton newGameBtn = new RoundedButton("Нова гра", Theme.ACCENT, Theme.ACCENT_HOVER, Theme.TEXT_ON_ACCENT);
+        RoundedButton newGameBtn = new RoundedButton("New game", Theme.ACCENT, Theme.ACCENT_HOVER, Theme.TEXT_ON_ACCENT);
         newGameBtn.addActionListener(e -> showStartDialogAndReset());
-        RoundedButton menuBtn = new RoundedButton("У головне меню", Theme.SECONDARY_BTN, Theme.SECONDARY_BTN_HOVER, Theme.TEXT_PRIMARY);
+        RoundedButton menuBtn = new RoundedButton("To main menu", Theme.SECONDARY_BTN, Theme.SECONDARY_BTN_HOVER, Theme.TEXT_PRIMARY);
         menuBtn.addActionListener(e -> onBackToMenu.run());
 
         JPanel top = new JPanel(new BorderLayout());
@@ -103,7 +103,7 @@ public class ChessGamePanel extends JPanel {
         if (!isAiTurn()) return;
 
         boardPanel.setInteractive(false);
-        statusLabel.setText("ШІ (" + difficulty.label + ") обмірковує хід...");
+        statusLabel.setText("AI (" + difficulty.label + ")is considering a move ...");
         statusLabel.setForeground(Theme.TEXT_PRIMARY);
 
         Side aiSide = game.getTurn();
@@ -139,14 +139,14 @@ public class ChessGamePanel extends JPanel {
 
         int whiteMaterial = materialValue(Side.WHITE);
         int blackMaterial = materialValue(Side.BLACK);
-        scoreLabel.setText("Матеріал білих: " + whiteMaterial + "    Матеріал чорних: " + blackMaterial);
+        scoreLabel.setText("White material:     " + whiteMaterial + "Black material: " + blackMaterial);
 
         ChessGame.Status status = game.getStatus();
         if (status == ChessGame.Status.IN_PROGRESS) {
             boolean humanTurn = mode == ChessStartDialog.Mode.PVP || game.getTurn() == humanSide;
-            String turnName = game.getTurn() == Side.WHITE ? "білих" : "чорних";
-            String checkSuffix = game.isInCheck() ? "  —  ШАХ!" : "";
-            statusLabel.setText("Хід " + turnName + (humanTurn ? "" : " (ШІ)") + checkSuffix);
+            String turnName = game.getTurn() == Side.WHITE ? "white" : "black";
+            String checkSuffix = game.isInCheck() ? "  — CHESS!" : "";
+            statusLabel.setText("Course " + turnName + (humanTurn ? "" : " (AI)") + checkSuffix);
             statusLabel.setForeground(game.isInCheck() ? Theme.DANGER : Theme.TEXT_PRIMARY);
             boardPanel.setInteractive(humanTurn);
             List<ChessMove> legal = game.legalMovesForCurrentPlayer();
@@ -156,11 +156,11 @@ public class ChessGamePanel extends JPanel {
             boardPanel.setLegalMoves(java.util.Collections.emptyList());
             statusLabel.setForeground(Theme.ACCENT);
             switch (status) {
-                case WHITE_WINS_MATE -> statusLabel.setText("Мат! Перемога білих \u2666");
-                case BLACK_WINS_MATE -> statusLabel.setText("Мат! Перемога чорних \u2666");
-                case STALEMATE_DRAW -> statusLabel.setText("Пат — нічия");
-                case FIFTY_MOVE_DRAW -> statusLabel.setText("Нічия за правилом 50 ходів");
-                case INSUFFICIENT_MATERIAL_DRAW -> statusLabel.setText("Нічия — недостатньо матеріалу");
+                case WHITE_WINS_MATE -> statusLabel.setText(" Checkmate! White wins\u2666");
+                case BLACK_WINS_MATE -> statusLabel.setText(" Checkmate! Black wins\u2666");
+                case STALEMATE_DRAW -> statusLabel.setText("Pat - draw");
+                case FIFTY_MOVE_DRAW -> statusLabel.setText("Draw by the 50-move rule");
+                case INSUFFICIENT_MATERIAL_DRAW -> statusLabel.setText("Draw - not enough material");
                 default -> {
                 }
             }
