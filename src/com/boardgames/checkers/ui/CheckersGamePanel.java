@@ -150,8 +150,8 @@ public class CheckersGamePanel extends JPanel {
             boardPanel.setLegalMoves(java.util.Collections.emptyList());
             statusLabel.setForeground(Theme.ACCENT);
             switch (status) {
-                case WHITE_WINS -> statusLabel.setText(" White victory\u2666");
-                case BLACK_WINS -> statusLabel.setText("Black victory \u2666");
+                case WHITE_WINS -> statusLabel.setText(" White victory♦");
+                case BLACK_WINS -> statusLabel.setText("Black victory ♦");
                 case DRAW -> statusLabel.setText("Draw");
                 default -> {
                 }

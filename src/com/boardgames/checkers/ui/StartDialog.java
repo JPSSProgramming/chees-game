@@ -28,7 +28,7 @@ public class StartDialog extends JDialog {
         content.setLayout(new BoxLayout(content, BoxLayout.Y_AXIS));
         content.setBorder(BorderFactory.createEmptyBorder(20, 24, 20, 24));
 
-        JPanel title = Theme.iconTitle("\u26C2", "Checkers", Theme.FONT_TITLE.deriveFont(22f), Theme.TEXT_PRIMARY);
+        JPanel title = Theme.iconTitle("⛂", "Checkers", Theme.FONT_TITLE.deriveFont(22f), Theme.TEXT_PRIMARY);
         title.setAlignmentX(Component.CENTER_ALIGNMENT);
         content.add(title);
 

@@ -244,12 +244,12 @@ public class ChessBoardPanel extends JPanel {
     private String glyphFor(ChessPiece p) {
         boolean w = p.side == Side.WHITE;
         return switch (p.type) {
-            case KING -> w ? "\u2654" : "\u265A";
-            case QUEEN -> w ? "\u2655" : "\u265B";
-            case ROOK -> w ? "\u2656" : "\u265C";
-            case BISHOP -> w ? "\u2657" : "\u265D";
-            case KNIGHT -> w ? "\u2658" : "\u265E";
-            case PAWN -> w ? "\u2659" : "\u265F";
+            case KING -> w ? "♔" : "♚";
+            case QUEEN -> w ? "♕" : "♛";
+            case ROOK -> w ? "♖" : "♜";
+            case BISHOP -> w ? "♗" : "♝";
+            case KNIGHT -> w ? "♘" : "♞";
+            case PAWN -> w ? "♙" : "♟";
         };
     }
 }

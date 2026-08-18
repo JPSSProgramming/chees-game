@@ -156,8 +156,8 @@ public class ChessGamePanel extends JPanel {
             boardPanel.setLegalMoves(java.util.Collections.emptyList());
             statusLabel.setForeground(Theme.ACCENT);
             switch (status) {
-                case WHITE_WINS_MATE -> statusLabel.setText(" Checkmate! White wins\u2666");
-                case BLACK_WINS_MATE -> statusLabel.setText(" Checkmate! Black wins\u2666");
+                case WHITE_WINS_MATE -> statusLabel.setText(" Checkmate! White wins♦");
+                case BLACK_WINS_MATE -> statusLabel.setText(" Checkmate! Black wins♦");
                 case STALEMATE_DRAW -> statusLabel.setText("Pat - draw");
                 case FIFTY_MOVE_DRAW -> statusLabel.setText("Draw by the 50-move rule");
                 case INSUFFICIENT_MATERIAL_DRAW -> statusLabel.setText("Draw - not enough material");

@@ -28,7 +28,7 @@ public class ChessStartDialog extends JDialog {
         content.setLayout(new BoxLayout(content, BoxLayout.Y_AXIS));
         content.setBorder(BorderFactory.createEmptyBorder(20, 24, 20, 24));
 
-        JPanel title = Theme.iconTitle("\u265A", "Chess", Theme.FONT_TITLE.deriveFont(22f), Theme.TEXT_PRIMARY);
+        JPanel title = Theme.iconTitle("♚", "Chess", Theme.FONT_TITLE.deriveFont(22f), Theme.TEXT_PRIMARY);
         title.setAlignmentX(Component.CENTER_ALIGNMENT);
         content.add(title);
 

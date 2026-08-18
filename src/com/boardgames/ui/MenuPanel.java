@@ -28,13 +28,13 @@ public class MenuPanel extends GradientPanel {
         title.setAlignmentX(Component.CENTER_ALIGNMENT);
         title.setBorder(BorderFactory.createEmptyBorder(4, 0, 28, 0));
 
-        MenuCard checkersCard = new MenuCard("\u26C2", "Checkers",
+        MenuCard checkersCard = new MenuCard("⛂", "Checkers",
                 "Ukrainian checkers with mandatory capture and checkers", onCheckers);
         checkersCard.setAlignmentX(Component.CENTER_ALIGNMENT);
         checkersCard.setMaximumSize(new Dimension(440, 100));
         checkersCard.setPreferredSize(new Dimension(440, 100));
 
-        MenuCard chessCard = new MenuCard("\u265A", "Chess",
+        MenuCard chessCard = new MenuCard("♚", "Chess",
                 "Classic chess: castling, passing capture, checkmate", onChess);
         chessCard.setAlignmentX(Component.CENTER_ALIGNMENT);
         chessCard.setMaximumSize(new Dimension(440, 100));
